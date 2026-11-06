@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DrawManager : MonoBehaviour
 {
+    /*
     public static DrawManager instance;
 
     private void Awake()
@@ -15,6 +16,7 @@ public class DrawManager : MonoBehaviour
             Destroy(this);
         }
     }
+    */
 
     public static Texture2D CreateTex(int width, int height, Color colour)
     {

@@ -1,14 +1,19 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    GameObject[][] _grid = new GameObject;
+    public GameObject[][] _gridContains;
+
+    public Vector2 playerHeadPos;
+
+    public Queue<Vector2> playerPos;
 
     public int _score = 0;
-    public int _lives = 3;
     public int _scoreMul = 100;
 
     public TMP_Text _livesText;
@@ -28,6 +33,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitGrid();
+
+
     }
 
     // Update is called once per frame
@@ -42,7 +49,16 @@ public class GameManager : MonoBehaviour
         transform.rotation = Quaternion.identity;
         transform.localScale = new Vector3(0.01f, 0.01f, 1);
 
-        DrawManager.instance
+        Image borderBG = gameObject.AddComponent<Image>();
+
+        Texture2D boarderTex = DrawManager.SingleTex(Color.gray);
+
+
+    }
+
+    public void Move()
+    {
+
     }
 
     public void AddScore(int score)
@@ -52,10 +68,6 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage()
     {
-        _lives -= 1;
-        _livesText.text = "Lives: " + _lives.ToString();
-        if (_lives <= 0)
-        {
-        }
+        Time.timeScale = 0;
     }
 }
